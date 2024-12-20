@@ -3,7 +3,7 @@ from sklearn.datasets import load_wine
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import classification_report, accuracy_score
+from sklearn.metrics import accuracy_score
 
 
 data = load_wine()
@@ -11,7 +11,7 @@ X = data.data
 y = data.target
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=99)
 
 
 scaler = StandardScaler()
@@ -19,20 +19,17 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 
-mlp = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=500, random_state=42)
+mlp = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=666, random_state=99)
 mlp.fit(X_train, y_train)
 
 
 y_pred = mlp.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
-print(f"Accuracy: {accuracy}")
-print(f"\nClassification Report:\n{classification_report(y_test, y_pred)}")
+print(f"accuracy: {accuracy}")
 
 
-plt.plot(mlp.loss_curve_, label="Loss curve")
+plt.plot(mlp.loss_curve_, label="loss")
 plt.xlabel("Iterations")
 plt.ylabel("Loss")
-plt.title("Training Loss Curve")
-plt.legend()
 plt.show()

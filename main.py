@@ -26,8 +26,8 @@ mlp.fit(X_train, y_train)
 y_pred = mlp.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
-print("Accuracy:", accuracy)
-print("\nClassification Report:\n", classification_report(y_test, y_pred))
+print(f"Accuracy: {accuracy}")
+print(f"\nClassification Report:\n{classification_report(y_test, y_pred)}")
 
 
 plt.plot(mlp.loss_curve_, label="Loss curve")

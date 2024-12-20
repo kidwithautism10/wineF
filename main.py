@@ -19,7 +19,7 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 
-mlp = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=666, random_state=99)
+mlp = MLPClassifier(hidden_layer_sizes=(100, 100), max_iter=666, random_state=99)
 mlp.fit(X_train, y_train)
 
 
@@ -27,7 +27,6 @@ y_pred = mlp.predict(X_test)
 accuracy = accuracy_score(y_test, y_pred)
 
 print(f"accuracy: {accuracy}")
-
 
 plt.plot(mlp.loss_curve_, label="loss")
 plt.xlabel("Iterations")

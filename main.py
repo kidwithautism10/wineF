@@ -11,7 +11,7 @@ X = data.data
 y = data.target
 
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=99)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.5)
 
 
 scaler = StandardScaler()
@@ -19,7 +19,7 @@ X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
 
-mlp = MLPClassifier(hidden_layer_sizes=(100, 100), max_iter=666, random_state=99)
+mlp = MLPClassifier(hidden_layer_sizes=(100, 100), max_iter=999)
 mlp.fit(X_train, y_train)
 
 
